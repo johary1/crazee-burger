@@ -1,8 +1,9 @@
+import LoginPage from "./components/pages/LoginPage";
 
 const App = () => {
   return (
     <div>
-      <h1>CRAZY BURGER</h1>
+      <LoginPage />
     </div>
   );
 };
