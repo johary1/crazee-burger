@@ -1,5 +1,6 @@
 import { useState } from "react";
-const LoginPage = () => {
+
+const LoginForm = () => {
   // state
   const [firstName, setFirstName] = useState("");
 
@@ -15,12 +16,11 @@ const LoginPage = () => {
     setFirstName(event.target.value);
   };
 
-  //render
   return (
-    <div className="login-form">
-      <h1 className="title-form">Bienvenue chez nous !</h1>
-      <h2 className="subtitle-form">Connectez-vous</h2>
+    <div>
       <form action="submit" onSubmit={handleSubmit}>
+        <h1 className="title-form">Bienvenue chez nous !</h1>
+        <h2 className="subtitle-form">Connectez-vous</h2>
         <input
           type="text"
           value={firstName}
@@ -35,4 +35,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginForm;
