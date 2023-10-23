@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../generic/logo";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import { PiUserCircleFill } from "react-icons/pi";
 import { BsChevronRight } from "react-icons/bs";
+import LogoBurger from "../../generic/LogoBurger";
 
 const LoginForm = () => {
   // state
@@ -28,7 +28,7 @@ const LoginForm = () => {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <Logo />
+      <LogoBurger />
       <h1 className="title-form">Bienvenue chez nous!</h1>
       <h2 className="subtitle-form">Connectez-vous</h2>
       <div className="input-form">

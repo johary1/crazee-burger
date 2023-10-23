@@ -1,4 +1,4 @@
-const Logo = () => {
+const LogoBurger = () => {
   return (
     <div className="logo">
       CRAZEE
@@ -8,4 +8,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default LogoBurger;
