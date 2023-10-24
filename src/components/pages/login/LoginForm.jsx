@@ -43,7 +43,7 @@ const LoginForm = () => {
       </div>
       <button type="submit" className="link-account">
         Accéder à mon espace
-        <BsChevronRight />
+        <BsChevronRight className="chevron-login" />
       </button>
     </LoginFormStyled>
   );
@@ -67,7 +67,7 @@ const LoginFormStyled = styled.form`
     align-content: center;
     color: ${theme.colors.primary};
     font-size: 72px;
-    font-family: ${theme.fontFamilies.regularFont};
+    font-family: ${theme.fontFamilies.regularFont}, cursive;
     letter-spacing: 1.5px;
     > img {
       width: 120px;
@@ -77,7 +77,7 @@ const LoginFormStyled = styled.form`
   h1 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P5};
-    font-family: ${theme.fontFamilies.regularFont};
+    font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-top: 61px;
     &:after {
@@ -95,7 +95,7 @@ const LoginFormStyled = styled.form`
   h2 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P4};
-    font-family: ${theme.fontFamilies.regularFont};
+    font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-bottom: 61px;
   }
@@ -119,6 +119,7 @@ const LoginFormStyled = styled.form`
   .link-account {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
+    font-weight: ${theme.weights.semiBold};
     border: none;
     border-radius: ${theme.borderRadius.round};
     box-shadow: ${theme.shadows.greyLight};
@@ -132,6 +133,11 @@ const LoginFormStyled = styled.form`
     &:hover {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
+    }
+
+    .chevron-login {
+      margin-top: 2px;
+      font-size: 12px;
     }
   }
 `;
