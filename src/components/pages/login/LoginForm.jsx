@@ -86,7 +86,7 @@ const LoginFormStyled = styled.form`
       display: block;
       border: 1px solid #f56a2c;
       background-color: #f56a2c;
-      border-radius: 5px;
+      border-radius: ${theme.borderRadius.round};
       height: 3px;
       width: 400px;
     }
@@ -108,7 +108,7 @@ const LoginFormStyled = styled.form`
     justify-content: center;
     align-items: center;
     padding: 18px, 30px, 18px, 30px;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     gap: 12.8px;
     input {
       border: none;
@@ -120,7 +120,7 @@ const LoginFormStyled = styled.form`
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
     border: none;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     box-shadow: ${theme.shadows.greyLight};
     margin: ${theme.spacing.md} auto;
     width: 400px;

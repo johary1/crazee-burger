@@ -53,7 +53,9 @@ const borderRadius = {
   circle: "50%",
 };
 const shadows = {
-  greyLight: "rgba(0, 0, 0, 0.25)",
+  strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
+  medium: "0px -2px 8px -2px rgba(0, 0, 0 / 20%)",
+  soft: "0 -2px 8px -2px rgba(0, 0, 0 / 10%)",
 };
 const weights = {
   light: 300,
