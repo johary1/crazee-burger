@@ -50,16 +50,27 @@ const LoginForm = () => {
 };
 
 const LoginFormStyled = styled.form`
-  background-image: url("/assets/img/burger-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.95;
+  :before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/img/burger-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+
+    z-index: -1;
+  }
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
   .logo {
     display: flex;
@@ -79,10 +90,10 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P5};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
-    margin-top: 61px;
+    margin-top: 30px;
     &:after {
       content: "";
-      margin: 50px auto;
+      margin: 30px auto;
       display: block;
       border: 1px solid #f56a2c;
       background-color: #f56a2c;
@@ -97,13 +108,13 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
-    margin-bottom: 61px;
+    margin-bottom: 30px;
   }
 
   .input-form {
     background-color: ${theme.colors.white};
-    width: 400px;
-    height: 55px;
+    min-width: 400px;
+    min-height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,8 +135,8 @@ const LoginFormStyled = styled.form`
     border-radius: ${theme.borderRadius.round};
     box-shadow: ${theme.shadows.greyLight};
     margin: ${theme.spacing.md} auto;
-    width: 400px;
-    height: 55px;
+    min-width: 400px;
+    min-height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
