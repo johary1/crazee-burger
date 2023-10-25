@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { PiUserCircleFill } from "react-icons/pi";
 import { BsChevronRight } from "react-icons/bs";
-import LogoBurger from "../../generic/LogoBurger";
+import LogoBurger from "../../reusable-ui/LogoBurger";
+import { PiUserCircleFill } from "react-icons/pi";
+
+import Input from "./Input";
 
 const LoginForm = () => {
   // state
@@ -15,9 +17,6 @@ const LoginForm = () => {
   // method
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (firstName.trim() === "") {
-      return;
-    }
     navigate(`/order/${firstName}`);
     setFirstName("");
   };
@@ -31,16 +30,14 @@ const LoginForm = () => {
       <LogoBurger />
       <h1 className="title-form">Bienvenue chez nous!</h1>
       <h2 className="subtitle-form">Connectez-vous</h2>
-      <div className="input-form">
-        <PiUserCircleFill />
-        <input
-          type="text"
-          value={firstName}
-          onChange={handleChange}
-          placeholder="Entrez votre prénom"
-          required
-        />
-      </div>
+      <Input
+        value={firstName}
+        onChange={handleChange}
+        placeholder={"Entrez votre prénom"}
+        required
+        Icon={<PiUserCircleFill />}
+      />
+
       <button type="submit" className="link-account">
         Accéder à mon espace
         <BsChevronRight className="chevron-login" />
@@ -72,19 +69,6 @@ const LoginFormStyled = styled.form`
   justify-content: center;
   align-items: center;
 
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    color: ${theme.colors.primary};
-    font-size: 72px;
-    font-family: ${theme.fontFamilies.regularFont}, cursive;
-    letter-spacing: 1.5px;
-    > img {
-      width: 120px;
-    }
-  }
-
   h1 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P5};
@@ -109,22 +93,6 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-bottom: 30px;
-  }
-
-  .input-form {
-    background-color: ${theme.colors.white};
-    min-width: 400px;
-    min-height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px, 30px, 18px, 30px;
-    border-radius: ${theme.borderRadius.round};
-    gap: 12.8px;
-    input {
-      border: none;
-      width: 324px;
-    }
   }
 
   .link-account {
