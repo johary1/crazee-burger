@@ -6,7 +6,7 @@ import { BsChevronRight } from "react-icons/bs";
 import LogoBurger from "../../reusable-ui/LogoBurger";
 import { PiUserCircleFill } from "react-icons/pi";
 
-import Input from "./Input";
+import TextInput from "../../reusable-ui/TextInput";
 
 const LoginForm = () => {
   // state
@@ -30,7 +30,7 @@ const LoginForm = () => {
       <LogoBurger />
       <h1 className="title-form">Bienvenue chez nous!</h1>
       <h2 className="subtitle-form">Connectez-vous</h2>
-      <Input
+      <TextInput
         value={firstName}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
