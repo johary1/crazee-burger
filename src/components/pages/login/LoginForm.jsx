@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { BsChevronRight } from "react-icons/bs";
 import LogoBurger from "../../reusable-ui/LogoBurger";
 import { PiUserCircleFill } from "react-icons/pi";
-
 import TextInput from "../../reusable-ui/TextInput";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import { BsChevronRight } from "react-icons/bs";
 
 const LoginForm = () => {
   // state
@@ -38,10 +38,10 @@ const LoginForm = () => {
         Icon={<PiUserCircleFill />}
       />
 
-      <button type="submit" className="link-account">
-        Accéder à mon espace
-        <BsChevronRight className="chevron-login" />
-      </button>
+      <PrimaryButton
+        label="Accéder à mon espace"
+        Icon={<BsChevronRight className="chevron-login" />}
+      />
     </LoginFormStyled>
   );
 };
@@ -95,29 +95,9 @@ const LoginFormStyled = styled.form`
     margin-bottom: 30px;
   }
 
-  .link-account {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
-    font-weight: ${theme.weights.semiBold};
-    border: none;
-    border-radius: ${theme.borderRadius.round};
-    box-shadow: ${theme.shadows.greyLight};
-    margin: ${theme.spacing.md} auto;
-    min-width: 400px;
-    min-height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
-    }
-
-    .chevron-login {
-      margin-top: 2px;
-      font-size: 12px;
-    }
+  .chevron-login {
+    margin-top: 2px;
+    font-size: 12px;
   }
 `;
 
