@@ -10,14 +10,14 @@ import TextInput from "../../reusable-ui/TextInput";
 
 const LoginForm = () => {
   // state
-  const [firstName, setFirstName] = useState("");
+  const [inputValue, setFirstName] = useState("");
 
   const navigate = useNavigate();
 
   // method
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/order/${firstName}`);
+    navigate(`/order/${inputValue}`);
     setFirstName("");
   };
 
@@ -31,7 +31,7 @@ const LoginForm = () => {
       <h1 className="title-form">Bienvenue chez nous!</h1>
       <h2 className="subtitle-form">Connectez-vous</h2>
       <TextInput
-        value={firstName}
+        value={inputValue}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required
