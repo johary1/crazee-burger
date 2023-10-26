@@ -35,7 +35,7 @@ const LoginForm = () => {
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required
-        Icon={<PiUserCircleFill />}
+        Icon={<PiUserCircleFill className="icon" />}
       />
 
       <PrimaryButton
@@ -60,9 +60,9 @@ const LoginFormStyled = styled.form`
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: darken;
-
     z-index: -1;
   }
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,10 @@ const LoginFormStyled = styled.form`
     text-transform: uppercase;
     margin-bottom: 30px;
   }
-
+  .icon {
+    color: ${theme.colors.greyMedium};
+    font-size: 20px;
+  }
   .chevron-login {
     margin-top: 2px;
     font-size: 12px;
