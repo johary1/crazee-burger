@@ -2,23 +2,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import LogoBurger from "../../reusable-ui/LogoBurger";
 import { PiUserCircleFill } from "react-icons/pi";
+import TextInput from "../../reusable-ui/TextInput";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import { BsChevronRight } from "react-icons/bs";
-import LogoBurger from "../../generic/LogoBurger";
 
 const LoginForm = () => {
   // state
-  const [firstName, setFirstName] = useState("");
+  const [inputValue, setFirstName] = useState("");
 
   const navigate = useNavigate();
 
   // method
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (firstName.trim() === "") {
-      return;
-    }
-    navigate(`/order/${firstName}`);
+    navigate(`/order/${inputValue}`);
     setFirstName("");
   };
 
@@ -31,58 +30,54 @@ const LoginForm = () => {
       <LogoBurger />
       <h1 className="title-form">Bienvenue chez nous!</h1>
       <h2 className="subtitle-form">Connectez-vous</h2>
-      <div className="input-form">
-        <PiUserCircleFill />
-        <input
-          type="text"
-          value={firstName}
-          onChange={handleChange}
-          placeholder="Entrez votre prénom"
-          required
-        />
-      </div>
-      <button type="submit" className="link-account">
-        Accéder à mon espace
-        <BsChevronRight className="chevron-login" />
-      </button>
+      <TextInput
+        value={inputValue}
+        onChange={handleChange}
+        placeholder={"Entrez votre prénom"}
+        required
+        Icon={<PiUserCircleFill className="icon" />}
+      />
+
+      <PrimaryButton
+        label="Accéder à mon espace"
+        Icon={<BsChevronRight className="chevron-login" />}
+      />
     </LoginFormStyled>
   );
 };
 
 const LoginFormStyled = styled.form`
-  background-image: url("/assets/img/burger-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.95;
+  :before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/img/burger-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    z-index: -1;
+  }
+  position: relative;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    color: ${theme.colors.primary};
-    font-size: 72px;
-    font-family: ${theme.fontFamilies.regularFont}, cursive;
-    letter-spacing: 1.5px;
-    > img {
-      width: 120px;
-    }
-  }
 
   h1 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P5};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
-    margin-top: 61px;
+    margin-top: 30px;
     &:after {
       content: "";
-      margin: 50px auto;
+      margin: 30px auto;
       display: block;
       border: 1px solid #f56a2c;
       background-color: #f56a2c;
@@ -97,48 +92,15 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
-    margin-bottom: 61px;
+    margin-bottom: 30px;
   }
-
-  .input-form {
-    background-color: ${theme.colors.white};
-    width: 400px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px, 30px, 18px, 30px;
-    border-radius: ${theme.borderRadius.round};
-    gap: 12.8px;
-    input {
-      border: none;
-      width: 324px;
-    }
+  .icon {
+    color: ${theme.colors.greyMedium};
+    font-size: 20px;
   }
-
-  .link-account {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
-    font-weight: ${theme.weights.semiBold};
-    border: none;
-    border-radius: ${theme.borderRadius.round};
-    box-shadow: ${theme.shadows.greyLight};
-    margin: ${theme.spacing.md} auto;
-    width: 400px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.primary};
-    }
-
-    .chevron-login {
-      margin-top: 2px;
-      font-size: 12px;
-    }
+  .chevron-login {
+    margin-top: 2px;
+    font-size: 12px;
   }
 `;
 
