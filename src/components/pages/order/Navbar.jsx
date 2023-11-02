@@ -13,9 +13,7 @@ export default function Navbar({ firstName }) {
 }
 
 const NavbarStyled = styled.nav`
-  background-color: lightblue;
   height: 10vh;
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
