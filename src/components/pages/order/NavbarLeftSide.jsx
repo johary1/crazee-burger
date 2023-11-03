@@ -9,7 +9,7 @@ export default function NavbarLeftSide() {
 }
 
 const NavbarLeftSideStyled = styled.div`
-  transform: scale(0.4);
+  /* transform: scale(0.4);
   margin-left: -10%;
-  margin-bottom: 15px;
+  margin-bottom: 15px; */
 `;

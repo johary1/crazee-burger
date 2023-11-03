@@ -28,11 +28,10 @@ const NavbarRightSideStyled = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 70px;
-  padding-top: 5px;
+  padding-top: 20px auto 20px;
 `;
 
 const NavProfileStyled = styled.div`
-  padding: 0px 0px 10px;
   h1 {
     font-size: 24px;
     color: ${theme.colors.primary};
@@ -52,4 +51,5 @@ const NavProfileStyled = styled.div`
 const NavProfileIconStyled = styled.div`
   font-size: 35px;
   color: ${theme.colors.greySemiDark};
+  padding: 10px 0px 0px 5px;
 `;

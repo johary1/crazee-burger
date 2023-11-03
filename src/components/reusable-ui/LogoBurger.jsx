@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../theme/index";
-const LogoBurger = () => {
+const LogoBurger = ({ className }) => {
   return (
-    <LogoBurgerStyled>
+    <LogoBurgerStyled className={className}>
       CRAZEE
       <img src="/assets/img/logo-orange.png" alt="logo Crazee burger" />
       BURGER
@@ -11,15 +12,16 @@ const LogoBurger = () => {
 };
 
 const LogoBurgerStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  display: inline-flex;
+  align-items: center;
+  /* justify-content: center;
+  align-content: center; */
   color: ${theme.colors.primary};
-  font-size: 72px;
+  font-size: ${theme.fonts.P4};
   font-family: ${theme.fontFamilies.regularFont}, cursive;
   letter-spacing: 1.5px;
   > img {
-    width: 120px;
+    height: 60px;
   }
 `;
 

@@ -13,8 +13,9 @@ export default function Navbar({ firstName }) {
 }
 
 const NavbarStyled = styled.nav`
-  height: 10vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 20px 20px 15px 20px;
 `;
