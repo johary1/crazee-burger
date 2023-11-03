@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../theme/index";
+import { reloadPage } from "../../utils/window";
 const LogoBurger = ({ className }) => {
   return (
-    <LogoBurgerStyled className={className}>
+    <LogoBurgerStyled className={className} onClick={reloadPage}>
       CRAZEE
       <img src="/assets/img/logo-orange.png" alt="logo Crazee burger" />
       BURGER
@@ -14,8 +15,6 @@ const LogoBurger = ({ className }) => {
 const LogoBurgerStyled = styled.div`
   display: inline-flex;
   align-items: center;
-  /* justify-content: center;
-  align-content: center; */
   color: ${theme.colors.primary};
   font-size: ${theme.fonts.P4};
   font-family: ${theme.fontFamilies.regularFont}, cursive;
