@@ -27,9 +27,10 @@ const LoginForm = () => {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <LogoBurger />
-      <h1 className="title-form">Bienvenue chez nous!</h1>
-      <h2 className="subtitle-form">Connectez-vous</h2>
+      <div className="background"></div>
+      <LogoBurger className="logo-login-page" />
+      <div className="title-form">Bienvenue chez nous!</div>
+      <div className="subtitle-form">Connectez-vous</div>
       <TextInput
         value={inputValue}
         onChange={handleChange}
@@ -47,8 +48,7 @@ const LoginForm = () => {
 };
 
 const LoginFormStyled = styled.form`
-  :before {
-    content: "";
+  .background {
     position: absolute;
     top: 0;
     left: 0;
@@ -69,9 +69,9 @@ const LoginFormStyled = styled.form`
   justify-content: center;
   align-items: center;
 
-  h1 {
+  .title-form {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.P4};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-top: 30px;
@@ -87,9 +87,9 @@ const LoginFormStyled = styled.form`
     }
   }
 
-  h2 {
+  .subtitle-form {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.P3};
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -101,6 +101,11 @@ const LoginFormStyled = styled.form`
   .chevron-login {
     margin-top: 2px;
     font-size: 12px;
+  }
+
+  .logo-login-page {
+    transform: scale(2);
+    margin-bottom: 30px;
   }
 `;
 
