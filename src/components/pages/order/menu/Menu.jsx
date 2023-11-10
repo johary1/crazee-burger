@@ -91,9 +91,24 @@ export default function Menu() {
 const MenuWrapperStyled = styled.div`
   background-color: azure;
   display: grid;
-  grid-template-columns: 1FR 1FR 1FR 1FR;
+  ${theme.devices(
+    "mobile-xs",
+    "grid-template-columns: repeat(1, 1fr); gap: 10px;"
+  )}
+  ${theme.devices(
+    "mobile",
+    "grid-template-columns: repeat(2, 1fr); gap: 10px;"
+  )}
+  ${theme.devices(
+    "tablet",
+    "grid-template-columns: repeat(3, 1fr); gap: 20px;"
+  )}
+  ${theme.devices(
+    "desktop",
+    "grid-template-columns: repeat(4, 1fr); gap: 50px;"
+  )}
+  
   place-items: center;
-  gap: 50px;
   z-index: 23;
   max-height: 80vh;
   overflow-y: scroll;
