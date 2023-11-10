@@ -97,7 +97,7 @@ const MenuWrapperStyled = styled.div`
   )}
   ${theme.devices(
     "mobile",
-    "grid-template-columns: repeat(2, 1fr); gap: 10px;"
+    "grid-template-columns: repeat(1, 1fr); gap: 10px;"
   )}
   ${theme.devices(
     "tablet",
@@ -105,7 +105,7 @@ const MenuWrapperStyled = styled.div`
   )}
   ${theme.devices(
     "desktop",
-    "grid-template-columns: repeat(4, 1fr); gap: 50px;"
+    "grid-template-columns: repeat(4, 1fr); gap: 10px;"
   )}
   
   place-items: center;

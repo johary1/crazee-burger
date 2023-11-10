@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
-import LogoBurger from "../../reusable-ui/LogoBurger";
+import LogoBurger from "../../../reusable-ui/LogoBurger";
 
 export default function Navbar({ firstName }) {
   return (

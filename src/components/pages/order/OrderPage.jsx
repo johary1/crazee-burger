@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
-import Main from "./menu/Main";
 import { theme } from "../../../theme";
+import Navbar from "./Navbar/Navbar";
+import Main from "./Main/Main";
 
 const OrderPage = () => {
   const { firstName } = useParams();
