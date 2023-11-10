@@ -5,6 +5,7 @@ import Menu from "./Menu";
 export default function Main() {
   return (
     <MainStyled>
+      <div className="basket">Basket area</div>
       <Menu />
     </MainStyled>
   );
@@ -18,4 +19,9 @@ const MainStyled = styled.div`
   flex: 1;
   z-index: 20;
   height: 80%;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  .basket {
+    background: green;
+  }
 `;
