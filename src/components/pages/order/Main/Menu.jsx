@@ -1,51 +1,35 @@
-import styled from "styled-components";
-import { theme } from "../../../../theme";
 import { useState } from "react";
+import styled from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import Product from "./Product";
+import { theme } from "../../../../theme";
+import { formatPrice } from "../../../../utils/maths";
+import Card from "../../../reusable-ui/Card";
 
 export default function Menu() {
   const [menu, setMenu] = useState(fakeMenu2);
+
   return (
-    <MenuWrapperStyled>
-      {menu.map((produit, index) => {
+    <MenuStyled className="menu">
+      {menu.map(({ id, title, imageSource, price }) => {
         return (
-          <Product
-            key={index}
-            title={produit.title}
-            imageSource={produit.imageSource}
-            price={produit.price}
+          <Card
+            key={id}
+            title={title}
+            imageSource={imageSource}
+            leftDescription={formatPrice(price)}
           />
         );
       })}
-    </MenuWrapperStyled>
+    </MenuStyled>
   );
 }
 
-const MenuWrapperStyled = styled.div`
-  background-color: azure;
+const MenuStyled = styled.div`
+  background: ${theme.colors.background_white};
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
-  ${theme.devices(
-    "mobile-xs",
-    "grid-template-columns: repeat(1, 1fr); gap: 10px;"
-  )}
-  ${theme.devices(
-    "mobile",
-    "grid-template-columns: repeat(1, 1fr); gap: 10px;"
-  )}
-  ${theme.devices(
-    "tablet",
-    "grid-template-columns: repeat(3, 1fr); gap: 20px;"
-  )}
-  ${theme.devices(
-    "desktop",
-    "grid-template-columns: repeat(4, 1fr); gap: 10px;"
-  )}
-  
-  place-items: center;
-  z-index: 23;
-  max-height: 80vh;
-  overflow-y: scroll;
+  justify-items: center;
+  /* box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset; */
 `;

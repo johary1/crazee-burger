@@ -18,9 +18,11 @@ const MainStyled = styled.div`
   padding: 20px;
   flex: 1;
   z-index: 20;
-  height: 80%;
+  /* height: 80%; */
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 15% 1fr;
+  overflow-y: scroll;
+
   .basket {
     background: green;
   }

@@ -31,18 +31,20 @@ const LoginForm = () => {
       <LogoBurger className="logo-login-page" />
       <div className="title-form">Bienvenue chez nous!</div>
       <div className="subtitle-form">Connectez-vous</div>
-      <TextInput
-        value={inputValue}
-        onChange={handleChange}
-        placeholder={"Entrez votre prénom"}
-        required
-        Icon={<PiUserCircleFill className="icon" />}
-      />
-
-      <PrimaryButton
-        label="Accéder à mon espace"
-        Icon={<BsChevronRight className="chevron-login" />}
-      />
+      <div className="wrapper-input">
+        <TextInput
+          value={inputValue}
+          onChange={handleChange}
+          placeholder={"Entrez votre prénom"}
+          required
+          Icon={<PiUserCircleFill className="icon" />}
+        />
+        <PrimaryButton
+          className="inputForm"
+          label="Accéder à mon espace"
+          Icon={<BsChevronRight className="chevron-login" />}
+        />
+      </div>
     </LoginFormStyled>
   );
 };
@@ -93,6 +95,10 @@ const LoginFormStyled = styled.form`
     font-family: ${theme.fontFamilies.regularFont}, cursive;
     text-transform: uppercase;
     margin-bottom: 30px;
+  }
+
+  .inputForm {
+    margin-top: 30px;
   }
   .icon {
     color: ${theme.colors.greyMedium};
