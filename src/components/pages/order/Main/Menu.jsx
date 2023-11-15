@@ -1,89 +1,23 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import { useState } from "react";
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import Product from "./Product";
 
 export default function Menu() {
+  const [menu, setMenu] = useState(fakeMenu2);
   return (
     <MenuWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
-      <MenuItemWrapperStyled>
-        <img src="/images/burger1.png" alt="burger" />
-        <h3>TITLE ITEM</h3>
-        <div className="item-cart">
-          <small>PRICE ITEM</small>
-          <button>Ajouter</button>
-        </div>
-      </MenuItemWrapperStyled>
+      {menu.map((produit, index) => {
+        return (
+          <Product
+            key={index}
+            title={produit.title}
+            imageSource={produit.imageSource}
+            price={produit.price}
+          />
+        );
+      })}
     </MenuWrapperStyled>
   );
 }
@@ -91,6 +25,8 @@ export default function Menu() {
 const MenuWrapperStyled = styled.div`
   background-color: azure;
   display: grid;
+  grid-row-gap: 60px;
+  padding: 50px 50px 150px;
   ${theme.devices(
     "mobile-xs",
     "grid-template-columns: repeat(1, 1fr); gap: 10px;"
@@ -112,34 +48,4 @@ const MenuWrapperStyled = styled.div`
   z-index: 23;
   max-height: 80vh;
   overflow-y: scroll;
-`;
-
-const MenuItemWrapperStyled = styled.div`
-  background-color: ${theme.colors.white};
-  border: 1px solid lightgrey;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  border-radius: 15px;
-  width: 240px;
-  height: 330px;
-  h3 {
-    text-align: left;
-    margin-left: 20px;
-  }
-  img {
-    object-fit: cover;
-    width: 200px;
-    height: 145px;
-    margin: 0 auto;
-  }
-  .item-cart {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    small {
-      font-weight: bold;
-    }
-  }
 `;

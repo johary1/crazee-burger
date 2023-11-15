@@ -20,7 +20,7 @@ const MainStyled = styled.div`
   z-index: 20;
   height: 80%;
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 20% 1fr;
   .basket {
     background: green;
   }
