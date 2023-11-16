@@ -66,6 +66,39 @@ const weights = {
   heavy: 800,
 };
 
+const devices = (breakpoint, content) => {
+  if (breakpoint === "mobile-xs") {
+    return `@media only screen and (max-width: 414px) {
+      ${content}
+    }`;
+  }
+  if (breakpoint === "mobile") {
+    return `@media (min-width: 415px)and (max-width: 768px) {
+      ${content}
+    }`;
+  }
+
+  if (breakpoint === "tablet") {
+    return `@media (min-width: 769px) and (max-width: 991px) {
+      ${content}
+    }`;
+  }
+
+  if (breakpoint === "tablet-up") {
+    return `@media only screen and (min-width: 769px) {
+      ${content}
+    }`;
+  }
+
+  if (breakpoint === "desktop") {
+    return `@media only screen and (min-width: 992px) {
+      ${content}
+    }`;
+  }
+
+  return "";
+};
+
 export const theme = {
   colors,
   fonts,
@@ -75,4 +108,5 @@ export const theme = {
   shadows,
   weights,
   spacing,
+  devices,
 };
