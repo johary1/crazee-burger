@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../theme";
 
 export default function ToggleButton({
@@ -43,7 +43,7 @@ const ToggleButtonStyled = styled.div`
       height: 40px;
       width: 200px;
       position: relative;
-      font-size: ${theme.fonts.size.XXS};
+      font-size: ${theme.fonts.XXS};
       letter-spacing: 0.5px;
       border: 2px solid ${theme.colors.background_dark};
       padding: 0;
@@ -100,7 +100,7 @@ const ToggleButtonStyled = styled.div`
       left: auto;
       opacity: 1;
       color: ${theme.colors.primary};
-      font-weight: ${theme.fonts.weights.bold};
+      font-weight: ${theme.weights.bold};
     }
 
     // small circle when not checked
