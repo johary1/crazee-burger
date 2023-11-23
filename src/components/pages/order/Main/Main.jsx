@@ -17,7 +17,6 @@ const MainStyled = styled.div`
   border-radius: 0px 0px 15px 15px;
   padding: 20px;
   flex: 1;
-  z-index: 20;
   /* height: 80%; */
   display: grid;
   grid-template-columns: 15% 1fr;
