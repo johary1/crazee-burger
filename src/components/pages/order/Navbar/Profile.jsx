@@ -23,6 +23,7 @@ export default function Profile({ firstName }) {
 }
 
 const NavProfileStyled = styled.div`
+  padding-left: 50px;
   h1 {
     font-size: ${theme.fonts.P3};
     font-weight: ${theme.weights.light};

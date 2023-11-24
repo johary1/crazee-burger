@@ -23,9 +23,6 @@ const NavbarStyled = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 20px 15px 20px;
-  z-index: 10;
-  position: sticky;
-
   .logo-order-page {
     cursor: pointer;
   }
