@@ -5,11 +5,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../../theme";
 import ToastAdmin from "./ToastAdmin";
-import { useState } from "react";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 // eslint-disable-next-line react/prop-types
-export default function NavbarRightSide({ firstName }) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+export default function NavbarRightSide() {
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
 
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -29,11 +30,12 @@ export default function NavbarRightSide({ firstName }) {
   return (
     <NavbarRightSideStyled>
       <ToggleButton
+        isChecked={isModeAdmin}
         labelIfUnchecked="ACTIVER LE MODE ADMIN"
         labelIfChecked="DÉSACTIVER LE MODE ADMIN"
         onToggle={displayToastNotification}
       />
-      <Profile firstName={firstName} />
+      <Profile />
       <ToastAdmin />
     </NavbarRightSideStyled>
   );

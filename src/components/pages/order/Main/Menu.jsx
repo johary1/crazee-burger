@@ -6,6 +6,7 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 
 export default function Menu() {
+  // eslint-disable-next-line no-unused-vars
   const [menu, setMenu] = useState(fakeMenu2);
 
   return (

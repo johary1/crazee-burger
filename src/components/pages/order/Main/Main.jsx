@@ -2,14 +2,19 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
 import Admin from "./Admin/Admin";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Main() {
+  // eslint-disable-next-line no-unused-vars
+  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+
   return (
     <MainStyled>
       <div className="basket">Basket area</div>
       <div className="menu-and-admin">
         <Menu />
-        <Admin />
+        {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   );
