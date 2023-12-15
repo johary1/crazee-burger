@@ -5,11 +5,26 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { theme } from "../../../../../theme";
+import { useState } from "react";
 export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
+  const [isEditTabSelected, setisEditTabSelected] = useState(false);
   return (
     <AdminTabsStyled>
       <Tab
+        label=""
         Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
+      />
+      <Tab
+        label="Ajouter un produit"
+        Icon={<AiOutlinePlus />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
+      />
+      <Tab
+        label="Modifier un produit"
+        Icon={<MdModeEditOutline />}
         onClick={() => setIsCollapsed(!isCollapsed)}
         className={isCollapsed ? "is-active" : ""}
       />
@@ -25,5 +40,9 @@ const AdminTabsStyled = styled.div`
     background: ${theme.colors.background_dark};
     border-color: ${theme.colors.background_dark};
     color: ${theme.colors.white};
+  }
+
+  button {
+    margin-left: 1px;
   }
 `;
