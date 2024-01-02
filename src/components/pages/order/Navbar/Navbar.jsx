@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
 import LogoBurger from "../../../reusable-ui/LogoBurger";
 
-export default function Navbar({ firstName }) {
+export default function Navbar() {
   return (
     <NavbarStyled>
       <LogoBurger
@@ -12,7 +12,7 @@ export default function Navbar({ firstName }) {
           window.location.reload();
         }}
       />
-      <NavbarRightSide firstName={firstName} />
+      <NavbarRightSide />
     </NavbarStyled>
   );
 }

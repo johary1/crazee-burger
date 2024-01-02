@@ -2,9 +2,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { PiUserCircleFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export default function Profile({ firstName }) {
+export default function Profile() {
+  const { firstName } = useParams();
+
   return (
     <>
       <NavProfileStyled>

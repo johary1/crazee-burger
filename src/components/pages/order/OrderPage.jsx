@@ -1,38 +1,53 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
 import { theme } from "../../../theme";
-import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
+import OrderContext from "../../../context/OrderContext";
 
-const OrderPage = () => {
-  const { firstName } = useParams();
+export default function OrderPage() {
+  // state
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
+  // comportements
+
+  const orderContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  };
+
+  //affichage
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar firstName={firstName} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   );
-};
+}
 
 const OrderPageStyled = styled.div`
-  background-color: ${theme.colors.primary};
+  background: ${theme.colors.primary};
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px 0 20px 0;
 
   .container {
-    background-color: ${theme.colors.white};
-    border-radius: ${theme.borderRadius.extraRound};
+    background: ${theme.colors.white};
+    height: 95vh;
     width: 1400px;
-    margin: auto 50px;
     display: flex;
     flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
-
-export default OrderPage;
