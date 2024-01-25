@@ -11,14 +11,14 @@ export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
   const [newProduct, setnewProduct] = useState(EMPTY_PRODUCT);
 
-  const newProductToAdd = {
-    ...newProduct,
-    id: crypto.randomUUID(),
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    };
     handleAdd(newProductToAdd);
+    setnewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (event) => {
@@ -28,20 +28,27 @@ export default function AddForm() {
   };
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview"> Image preview</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt="newProduct.title" />
+        ) : (
+          <div className="no-image">Aucune image</div>
+        )}
+      </div>
+
       <div className="input-fields">
         <input
           value={newProduct.title}
           type="text"
           name="title"
-          placeholder="Nom"
+          placeholder="Nom du produit (ex: Burger)"
           onChange={handleChange}
         />
         <input
           value={newProduct.imageSource}
           type="text"
           name="imageSource"
-          placeholder="Image URL"
+          placeholder="Lien URL d'une image"
           onChange={handleChange}
         />
         <input
@@ -71,8 +78,20 @@ const AddFormStyled = styled.form`
   width: 70%;
 
   .image-preview {
-    background: red;
     grid-area: image-preview;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .no-image {
+      text-align: center;
+      transform: translate(0%, 40%);
+    }
   }
   .input-fields {
     background: blue;
