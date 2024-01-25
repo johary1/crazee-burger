@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
+import { FiCheck } from "react-icons/fi";
 const EMPTY_PRODUCT = {
   id: "",
   title: "",
@@ -10,7 +11,12 @@ const EMPTY_PRODUCT = {
 export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
   const [newProduct, setnewProduct] = useState(EMPTY_PRODUCT);
-
+  const [isSubmitted, setisSubmitted] = useState(false);
+  const displaySuccesMessage = () => {
+    setTimeout(() => {
+      setisSubmitted(false);
+    }, 2000);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const newProductToAdd = {
@@ -19,6 +25,8 @@ export default function AddForm() {
     };
     handleAdd(newProductToAdd);
     setnewProduct(EMPTY_PRODUCT);
+    setisSubmitted(true);
+    displaySuccesMessage();
   };
 
   const handleChange = (event) => {
@@ -41,25 +49,33 @@ export default function AddForm() {
           value={newProduct.title}
           type="text"
           name="title"
-          placeholder="Nom du produit (ex: Burger)"
+          placeholder=" Nom du produit (ex: Burger)"
           onChange={handleChange}
         />
         <input
           value={newProduct.imageSource}
           type="text"
           name="imageSource"
-          placeholder="Lien URL d'une image"
+          placeholder=" Lien URL d'une image"
           onChange={handleChange}
         />
         <input
           value={newProduct.price ? newProduct.price : ""}
           type="text"
           name="price"
-          placeholder="Prix"
+          placeholder=" Prix"
           onChange={handleChange}
         />
       </div>
-      <button className="submit-button"> Submit button</button>
+      <div className="submit-button">
+        <button type="submit">Ajouter</button>
+        {isSubmitted && (
+          <div className="success-message">
+            <FiCheck />
+            <span>Ajouter avec succès !</span>
+          </div>
+        )}
+      </div>
     </AddFormStyled>
   );
 }
@@ -100,8 +116,19 @@ const AddFormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
   }
   .submit-button {
-    background: green;
+    /* background: green; */
     grid-area: submit-button;
-    width: 50%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    button {
+      width: 50%;
+      height: 100%;
+    }
+
+    .success-message {
+      border: 1px solid green;
+      padding: 5px 10px;
+    }
   }
 `;
