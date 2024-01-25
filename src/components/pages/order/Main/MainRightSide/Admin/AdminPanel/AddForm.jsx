@@ -13,7 +13,7 @@ export default function AddForm() {
 
   const newProductToAdd = {
     ...newProduct,
-    id: new Date().getTime(),
+    id: crypto.randomUUID(),
   };
 
   const handleSubmit = (event) => {
