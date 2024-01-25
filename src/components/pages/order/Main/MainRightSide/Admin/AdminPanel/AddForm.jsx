@@ -5,7 +5,7 @@ const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
-  price: "",
+  price: 0,
 };
 export default function AddForm() {
   const { handleAdd } = useContext(OrderContext);
