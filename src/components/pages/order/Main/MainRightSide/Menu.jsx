@@ -8,7 +8,8 @@ import OrderContext from "../../../../../context/OrderContext";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 export default function Menu() {
   // eslint-disable-next-line no-unused-vars
-  const { menu, isModeAdmin } = useContext(OrderContext);
+  const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -19,6 +20,7 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
+            onDelete={() => handleDelete(id)}
           />
         );
       })}

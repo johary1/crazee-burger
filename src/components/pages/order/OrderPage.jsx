@@ -20,6 +20,13 @@ export default function OrderPage() {
     const menuUpdated = [newProduct, ...menuCopy];
     setMenu(menuUpdated);
   };
+  const handleDelete = (idOfProductToDelete) => {
+    const menuCopy = [...menu];
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+    setMenu(menuUpdated);
+  };
 
   const orderContextValue = {
     isModeAdmin,
@@ -31,6 +38,7 @@ export default function OrderPage() {
     menu,
     // setMenu,
     handleAdd,
+    handleDelete,
   };
 
   //affichage
