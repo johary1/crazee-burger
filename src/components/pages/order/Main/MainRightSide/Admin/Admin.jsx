@@ -21,4 +21,5 @@ const AdminStyled = styled.div`
   left: 0;
   right: 0;
   border-bottom-right-radius: 15px;
+  z-index: 2;
 `;

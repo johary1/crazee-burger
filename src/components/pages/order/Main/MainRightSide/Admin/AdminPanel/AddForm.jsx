@@ -24,9 +24,9 @@ export default function AddForm() {
       id: crypto.randomUUID(),
     };
     handleAdd(newProductToAdd);
-    setnewProduct(EMPTY_PRODUCT);
     setisSubmitted(true);
     displaySuccesMessage();
+    setnewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (event) => {
