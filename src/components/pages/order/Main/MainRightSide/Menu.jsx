@@ -8,8 +8,17 @@ import OrderContext from "../../../../../context/OrderContext";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 export default function Menu() {
   // eslint-disable-next-line no-unused-vars
-  const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(OrderContext);
 
+  if (menu.length === 0) {
+    return (
+      <div>
+        <span>Aucun produit dans le menu</span>
+        <button onClick={resetMenu}>recharger le menu</button>
+      </div>
+    );
+  }
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {

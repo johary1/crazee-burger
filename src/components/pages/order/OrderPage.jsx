@@ -5,6 +5,7 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { MdNfc } from "react-icons/md";
 
 export default function OrderPage() {
   // state
@@ -28,6 +29,10 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const resetMenu = () => {
+    setMenu(fakeMenu.MEDIUM);
+  };
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -36,9 +41,9 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    // setMenu,
     handleAdd,
     handleDelete,
+    resetMenu,
   };
 
   //affichage
