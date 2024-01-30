@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
+import { theme } from "../../../../../../../theme";
 const EMPTY_PRODUCT = {
   id: "",
   title: "",
@@ -81,7 +82,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 2px solid black;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
@@ -92,6 +92,8 @@ const AddFormStyled = styled.form`
     ".               submit-button";
   height: 100%;
   width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
     grid-area: image-preview;
@@ -105,8 +107,13 @@ const AddFormStyled = styled.form`
       object-position: center;
     }
     .no-image {
-      text-align: center;
-      transform: translate(0%, 40%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid ${theme.colors.greyLight};
+      border-radius: ${theme.borderRadius.round};
     }
   }
   .input-fields {
