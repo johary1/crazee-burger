@@ -117,9 +117,9 @@ const AddFormStyled = styled.form`
     }
   }
   .input-fields {
-    background: blue;
     grid-area: input-fields;
     display: grid;
+    grid-row-gap: 8px;
     grid-template-rows: repeat(3, 1fr);
   }
   .submit-button {
