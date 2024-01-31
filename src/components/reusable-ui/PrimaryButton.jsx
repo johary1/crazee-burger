@@ -2,11 +2,11 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ label, Icon, className }) {
+export default function PrimaryButton({ label, Icon }) {
   return (
-    <PrimaryButtonStyled className={className}>
+    <PrimaryButtonStyled>
       <span>{label}</span>
-      {Icon && Icon}
+      <div className="icon">{Icon && Icon}</div>
     </PrimaryButtonStyled>
   );
 }
@@ -17,18 +17,17 @@ const PrimaryButtonStyled = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  position: relative; //is used in case you want to create interactive icons where an icon replaces the text label.
-  white-space: nowrap; //prevents the text label from wrapping to the next line.
-  text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
   line-height: 1;
-
   padding: 18px 24px;
   border-radius: 5px;
   font-size: 15px;
   font-weight: 800;
   color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
+  background-color: ${theme.colors.primary_burger};
+  border: 1px solid ${theme.colors.primary_burger};
 
   :hover {
     color: ${theme.colors.primary};
@@ -60,5 +59,13 @@ const PrimaryButtonStyled = styled.button`
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P2};
   }
 `;

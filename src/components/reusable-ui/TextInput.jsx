@@ -1,10 +1,17 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../theme";
 // eslint-disable-next-line react/prop-types
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  ...extraProps
+}) {
   return (
-    <InputStyled>
-      {Icon && Icon}
+    <InputStyled className={className}>
+      <div className="icon">{Icon && Icon}</div>
       <input value={value} type="text" onChange={onChange} {...extraProps} />
     </InputStyled>
   );
@@ -19,9 +26,21 @@ const InputStyled = styled.div`
   align-items: center;
   padding: 18px, 30px, 18px, 30px;
   border-radius: ${theme.borderRadius.round};
-  gap: 12.8px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${theme.colors.greySemiDark};
+    font-size: ${theme.fonts.P2};
+    margin-right: 15px;
+  }
   input {
     border: none;
-    width: 324px;
+    width: 80%;
+    &:placeholder {
+      color: ${theme.colors.greyMedium};
+      background: ${theme.colors.white};
+    }
   }
 `;

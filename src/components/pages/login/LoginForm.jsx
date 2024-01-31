@@ -37,12 +37,13 @@ const LoginForm = () => {
           onChange={handleChange}
           placeholder={"Entrez votre prénom"}
           required
-          Icon={<PiUserCircleFill className="icon" />}
+          Icon={<PiUserCircleFill />}
+          className="input-login"
         />
         <PrimaryButton
           className="inputForm"
           label="Accéder à mon espace"
-          Icon={<BsChevronRight className="chevron-login" />}
+          Icon={<BsChevronRight />}
         />
       </div>
     </LoginFormStyled>
@@ -97,16 +98,12 @@ const LoginFormStyled = styled.form`
     margin-bottom: 30px;
   }
 
+  .input-login {
+    margin-bottom: 30px;
+  }
+
   .inputForm {
     margin-top: 30px;
-  }
-  .icon {
-    color: ${theme.colors.greyMedium};
-    font-size: 20px;
-  }
-  .chevron-login {
-    margin-top: 2px;
-    font-size: 12px;
   }
 
   .logo-login-page {
