@@ -3,6 +3,10 @@ import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
 import { theme } from "../../../../../../../theme";
+import { FaHamburger } from "react-icons/fa";
+import { BsFillCameraFill } from "react-icons/bs";
+import { MdOutlineEuro } from "react-icons/md";
+import TextInput from "../../../../../../reusable-ui/TextInput";
 const EMPTY_PRODUCT = {
   id: "",
   title: "",
@@ -46,30 +50,36 @@ export default function AddForm() {
       </div>
 
       <div className="input-fields">
-        <input
+        <TextInput
           value={newProduct.title}
           type="text"
           name="title"
           placeholder=" Nom du produit (ex: Burger)"
           onChange={handleChange}
+          Icon={<FaHamburger />}
+          version="minimal"
         />
-        <input
+        <TextInput
           value={newProduct.imageSource}
           type="text"
           name="imageSource"
           placeholder=" Lien URL d'une image"
           onChange={handleChange}
+          Icon={<BsFillCameraFill />}
+          version="minimal"
         />
-        <input
+        <TextInput
           value={newProduct.price ? newProduct.price : ""}
           type="text"
           name="price"
           placeholder=" Prix"
           onChange={handleChange}
+          Icon={<MdOutlineEuro />}
+          version="minimal"
         />
       </div>
       <div className="submit-button">
-        <button type="submit">Ajouter</button>
+        <button type="submit">Ajouter un nouveau produit au menu</button>
         {isSubmitted && (
           <div className="success-message">
             <FiCheck />
@@ -93,7 +103,7 @@ const AddFormStyled = styled.form`
   height: 100%;
   width: 70%;
   grid-column-gap: 20px;
-  grid-row-gap: 8px;
+  /* grid-row-gap: 8px; */
 
   .image-preview {
     grid-area: image-preview;
