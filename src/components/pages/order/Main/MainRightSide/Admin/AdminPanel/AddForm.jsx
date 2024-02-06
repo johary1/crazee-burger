@@ -87,8 +87,8 @@ export default function AddForm() {
         />
         {isSubmitted && (
           <div className="success-message">
-            <FiCheck />
-            <span>Ajouter avec succès !</span>
+            <FiCheck className="icon" />
+            <span className="message">Ajouter avec succès !</span>
           </div>
         )}
       </div>
@@ -142,6 +142,8 @@ const AddFormStyled = styled.form`
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
+    top: 8px;
     button {
       width: 50%;
 
@@ -149,8 +151,26 @@ const AddFormStyled = styled.form`
     }
 
     .success-message {
-      border: 1px solid green;
-      padding: 5px 10px;
+      /* border: 1px solid green;
+      padding: 5px 10px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+      .icon {
+        color: ${theme.colors.success};
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.P0};
+        color: ${theme.colors.success};
+      }
     }
   }
 `;
