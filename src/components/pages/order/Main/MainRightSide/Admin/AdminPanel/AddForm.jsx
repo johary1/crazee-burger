@@ -7,6 +7,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../../reusable-ui/TextInput";
+import Button from "../../../../../../reusable-ui/Button";
 const EMPTY_PRODUCT = {
   id: "",
   title: "",
@@ -79,7 +80,11 @@ export default function AddForm() {
         />
       </div>
       <div className="submit-button">
-        <button type="submit">Ajouter un nouveau produit au menu</button>
+        <Button
+          type="submit"
+          label={"Ajouter un nouveau produit au menu"}
+          version="success"
+        />
         {isSubmitted && (
           <div className="success-message">
             <FiCheck />
@@ -133,14 +138,14 @@ const AddFormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr);
   }
   .submit-button {
-    /* background: green; */
     grid-area: submit-button;
     display: flex;
     align-items: center;
     width: 100%;
     button {
       width: 50%;
-      height: 100%;
+
+      /* height: 100%; */
     }
 
     .success-message {

@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ label, Icon }) {
+export default function Button({ label, Icon, version = "normal" }) {
   return (
-    <PrimaryButtonStyled>
+    <ButtonStyled version={version}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   );
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
+  ${({ version }) => extraStyle[version]}
+`;
+
+const extraStylePrimary = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
@@ -21,7 +25,7 @@ const PrimaryButtonStyled = styled.button`
   white-space: nowrap;
   text-decoration: none;
   line-height: 1;
-  padding: 18px 24px;
+  padding: 12px 18px;
   border-radius: 5px;
   font-size: 15px;
   font-weight: 800;
@@ -69,3 +73,29 @@ const PrimaryButtonStyled = styled.button`
     font-size: ${theme.fonts.P2};
   }
 `;
+
+const extraStyleSuccess = css`
+  cursor: pointer;
+  color: ${theme.colors.white};
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  border-radius: ${theme.borderRadius.round};
+  height: 35px;
+  /* padding: 0 1em; */
+  font-weight: ${theme.weights.semiBold};
+  :hover {
+    background: ${theme.colors.white};
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+  :active {
+    color: ${theme.colors.white};
+    background: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+`;
+
+const extraStyle = {
+  normal: extraStylePrimary,
+  success: extraStyleSuccess,
+};

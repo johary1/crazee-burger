@@ -5,7 +5,7 @@ import { theme } from "../../../theme";
 import LogoBurger from "../../reusable-ui/LogoBurger";
 import { PiUserCircleFill } from "react-icons/pi";
 import TextInput from "../../reusable-ui/TextInput";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import Button from "../../reusable-ui/Button";
 import { BsChevronRight } from "react-icons/bs";
 
 const LoginForm = () => {
@@ -40,7 +40,7 @@ const LoginForm = () => {
           Icon={<PiUserCircleFill />}
           className="input-login"
         />
-        <PrimaryButton
+        <Button
           className="inputForm"
           label="Accéder à mon espace"
           Icon={<BsChevronRight />}
