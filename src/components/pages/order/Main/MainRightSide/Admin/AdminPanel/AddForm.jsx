@@ -8,15 +8,15 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import Button from "../../../../../../reusable-ui/Button";
-const EMPTY_PRODUCT = {
+
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
   price: 0,
 };
 export default function AddForm() {
-  const { handleAdd } = useContext(OrderContext);
-  const [newProduct, setnewProduct] = useState(EMPTY_PRODUCT);
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
   const [isSubmitted, setisSubmitted] = useState(false);
   const displaySuccesMessage = () => {
     setTimeout(() => {
@@ -32,13 +32,13 @@ export default function AddForm() {
     handleAdd(newProductToAdd);
     setisSubmitted(true);
     displaySuccesMessage();
-    setnewProduct(EMPTY_PRODUCT);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (event) => {
     const newValue = event.target.value;
     const name = event.target.name;
-    setnewProduct({ ...newProduct, [name]: newValue });
+    setNewProduct({ ...newProduct, [name]: newValue });
   };
   return (
     <AddFormStyled onSubmit={handleSubmit}>

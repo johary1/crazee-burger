@@ -5,7 +5,8 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { MdNfc } from "react-icons/md";
+import { EMPTY_PRODUCT } from "./Main/MainRightSide/Admin/AdminPanel/AddForm";
+// import { MdNfc } from "react-icons/md";
 
 export default function OrderPage() {
   // state
@@ -13,6 +14,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   // comportements
 
@@ -44,6 +46,8 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   //affichage
