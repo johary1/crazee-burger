@@ -1,27 +1,77 @@
-import styled from "styled-components";
+/* eslint-disable react/prop-types */
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 // eslint-disable-next-line react/prop-types
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  version = "normal",
+  ...extraProps
+}) {
   return (
-    <InputStyled>
-      {Icon && Icon}
-      <input type="text" value={value} onChange={onChange} {...extraProps} />
-    </InputStyled>
+    <TextInputStyled className={className} version={version}>
+      <div className="icon">{Icon && Icon}</div>
+      <input value={value} type="text" onChange={onChange} {...extraProps} />
+    </TextInputStyled>
   );
 }
 
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
   background-color: ${theme.colors.white};
-  min-width: 400px;
-  min-height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px, 30px, 18px, 30px;
   border-radius: ${theme.borderRadius.round};
-  gap: 12.8px;
+  border: 1px solid ${theme.colors.greyLight};
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${theme.colors.greySemiDark};
+    font-size: ${theme.fonts.P2};
+    margin-right: 15px;
+    margin-left: -25px;
+  }
   input {
     border: none;
-    width: 324px;
+    width: 80%;
+    &:placeholder {
+      color: ${theme.colors.greyMedium};
+      background: ${theme.colors.white};
+    }
+  }
+
+  ${({ version }) => extraStyle[version]}
+`;
+
+const extraStyleNormal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+  input {
+    color: ${theme.colors.dark};
+    &:placeholder {
+      color: ${theme.colors.white};
+    }
   }
 `;
+const extraStyleMinimal = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
+  input {
+    background-color: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+    &:focus {
+      outline: 0;
+    }
+  }
+`;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimal: extraStyleMinimal,
+};

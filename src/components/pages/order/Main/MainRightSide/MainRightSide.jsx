@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import Admin from "./Admin/Admin";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 import { theme } from "../../../../../theme";
 
 export default function MainRightSide() {
@@ -20,6 +20,5 @@ const MainRightSideStyled = styled.div`
   position: relative;
   overflow-y: hidden;
   display: grid;
-  border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 `;
