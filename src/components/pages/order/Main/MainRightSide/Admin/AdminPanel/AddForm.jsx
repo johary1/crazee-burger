@@ -1,13 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../../context/OrderContext";
-import { FiCheck } from "react-icons/fi";
-import { theme } from "../../../../../../../theme";
-import { FaHamburger } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import Button from "../../../../../../reusable-ui/Button";
+import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./inputTextConfig";
+import { theme } from "../../../../../../../theme";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -15,82 +15,64 @@ export const EMPTY_PRODUCT = {
   imageSource: "",
   price: 0,
 };
+
 export default function AddForm() {
+  // state
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  const [isSubmitted, setisSubmitted] = useState(false);
-  const displaySuccesMessage = () => {
-    setTimeout(() => {
-      setisSubmitted(false);
-    }, 2000);
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // comportements
   const handleSubmit = (event) => {
     event.preventDefault();
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
     };
+
     handleAdd(newProductToAdd);
-    setisSubmitted(true);
-    displaySuccesMessage();
     setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccessMessage();
   };
 
   const handleChange = (event) => {
-    const newValue = event.target.value;
-    const name = event.target.name;
-    setNewProduct({ ...newProduct, [name]: newValue });
+    const { name, value } = event.target;
+    setNewProduct({ ...newProduct, [name]: value });
   };
+
+  const displaySuccessMessage = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
+  };
+
+  const inputTexts = getInputTextsConfig(newProduct);
+
+  // affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt="newProduct.title" />
-        ) : (
-          <div className="no-image">Aucune image</div>
-        )}
-      </div>
-
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="input-fields">
-        <TextInput
-          value={newProduct.title}
-          type="text"
-          name="title"
-          placeholder=" Nom du produit (ex: Burger)"
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          version="minimal"
-        />
-        <TextInput
-          value={newProduct.imageSource}
-          type="text"
-          name="imageSource"
-          placeholder=" Lien URL d'une image"
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          version="minimal"
-        />
-        <TextInput
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          name="price"
-          placeholder=" Prix"
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          version="minimal"
-        />
+        {inputTexts.map((input) => (
+          <TextInput
+            {...input}
+            key={input.id}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
       </div>
-      <div className="submit-button">
+      <div className="submit">
         <Button
-          type="submit"
+          className="submit-button"
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
-        {isSubmitted && (
-          <div className="success-message">
-            <FiCheck className="icon" />
-            <span className="message">Ajouter avec succès !</span>
-          </div>
-        )}
+        {isSubmitted && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -105,6 +87,7 @@ const AddFormStyled = styled.form`
     "image-preview   input-fields"
     "image-preview   input-fields"
     ".               submit-button";
+
   height: 100%;
   width: 70%;
   grid-column-gap: 20px;
@@ -137,7 +120,7 @@ const AddFormStyled = styled.form`
     grid-row-gap: 8px;
     grid-template-rows: repeat(3, 1fr);
   }
-  .submit-button {
+  .submit {
     grid-area: submit-button;
     display: flex;
     align-items: center;

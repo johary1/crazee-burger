@@ -33,6 +33,7 @@ const TextInputStyled = styled.div`
     color: ${theme.colors.greySemiDark};
     font-size: ${theme.fonts.P2};
     margin-right: 15px;
+    margin-left: -25px;
   }
   input {
     border: none;
