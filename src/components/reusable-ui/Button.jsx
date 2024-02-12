@@ -33,7 +33,7 @@ const extraStylePrimary = css`
   background-color: ${theme.colors.primary_burger};
   border: 1px solid ${theme.colors.primary_burger};
 
-  :hover {
+  &:hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
@@ -54,12 +54,12 @@ const extraStylePrimary = css`
     border: 1px solid white;
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
@@ -83,12 +83,12 @@ const extraStyleSuccess = css`
   height: 35px;
   /* padding: 0 1em; */
   font-weight: ${theme.weights.semiBold};
-  :hover {
+  &:hover {
     background: ${theme.colors.white};
     color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
-  :active {
+  &:active {
     color: ${theme.colors.white};
     background: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
