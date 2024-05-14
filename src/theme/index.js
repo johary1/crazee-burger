@@ -45,6 +45,7 @@ const fonts = {
 const fontFamilies = {
   boldFont: "AmaticSC-Bold",
   regularFont: "AmaticSC-Regular",
+  stylish: `"Amatic SC" , cursive`,
 };
 const gridUnit = 8;
 const borderRadius = {
