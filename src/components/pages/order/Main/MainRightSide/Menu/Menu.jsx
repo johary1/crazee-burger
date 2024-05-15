@@ -10,7 +10,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 export default function Menu() {
   // eslint-disable-next-line no-unused-vars
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } =
     useContext(OrderContext);
 
   if (menu.length === 0) {
@@ -19,6 +19,13 @@ export default function Menu() {
     }
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
+  const handleClick = (idProductSelected) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductSelected
+    );
+    setProductSelected(productSelected);
+  };
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -30,6 +37,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            onClick={() => handleClick(id)}
           />
         );
       })}

@@ -8,13 +8,7 @@ import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../../../theme";
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: 0,
-};
+import { EMPTY_PRODUCT } from "../../../../../../../enum/product";
 
 export default function AddForm() {
   // state
