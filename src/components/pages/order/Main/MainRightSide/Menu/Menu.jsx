@@ -1,24 +1,57 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import { formatPrice } from "../../../../../../utils/maths";
 import Card from "../../../../../reusable-ui/Card";
-import OrderContext from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./Helper";
+import { EMPTY_PRODUCT } from "../../../../../../enum/product";
 
-const DEFAULT_IMAGE = "/images/coming-soon.png";
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
+
 export default function Menu() {
-  // eslint-disable-next-line no-unused-vars
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
+  // state
 
+  // comportements (gestionnaires d'événement ou "event handlers")
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return;
+
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
+
+  // affichage
   if (menu.length === 0) {
-    if (!isModeAdmin) {
-      return <EmptyMenuClient />;
-    }
+    if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDelete(idProductToDelete);
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
+  };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -26,10 +59,13 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
+            onDelete={(event) => handleCardDelete(event, id)}
+            onClick={() => handleClick(id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
       })}
@@ -39,14 +75,12 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
-  height: 85vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
-  border-bottom-right-radius: 15px;
 `;

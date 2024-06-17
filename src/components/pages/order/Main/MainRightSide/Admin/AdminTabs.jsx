@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Tab from "../../../../../reusable-ui/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { theme } from "../../../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
-import { tabsConfig } from "./tabsConfig";
-import { theme } from "../../../../../../theme";
+import { getTabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   // state
@@ -17,11 +17,11 @@ export default function AdminTabs() {
 
   // comportements
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false);
+    setIsCollapsed(false); // tu m'ouvres le pannel
     setCurrentTabSelected(tabSelected);
   };
 
-  const tabs = tabsConfig;
+  const tabs = getTabsConfig();
 
   // affichage
   return (
