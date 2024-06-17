@@ -6,7 +6,7 @@ import { formatPrice } from "../../../../../../utils/maths";
 import Card from "../../../../../reusable-ui/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import { checkIfProductIsClicked } from "./helper";
+import { checkIfProductIsClicked } from "./Helper";
 import { EMPTY_PRODUCT } from "../../../../../../enum/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";

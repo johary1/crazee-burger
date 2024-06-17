@@ -101,7 +101,8 @@ const LoginFormStyled = styled.form`
   .input-login {
     margin-bottom: 30px;
     min-width: 400px;
-    min-height: 55px;
+    height: 55px;
+    padding: 0 15px;
   }
 
   .inputForm {
