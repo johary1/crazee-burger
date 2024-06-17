@@ -1,46 +1,39 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
+import React from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
-// eslint-disable-next-line react/prop-types
-export default function TextInput({
-  value,
-  onChange,
-  Icon,
-  className,
-  version = "normal",
-  ...extraProps
-}) {
-  return (
-    <TextInputStyled className={className} version={version}>
-      <div className="icon">{Icon && Icon}</div>
-      <input value={value} type="text" onChange={onChange} {...extraProps} />
-    </TextInputStyled>
-  );
-}
 
+const TextInput = React.forwardRef(
+  ({ onChange, Icon, className, version = "normal", ...extraProps }, ref) => {
+    return (
+      <TextInputStyled className={className} version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input ref={ref} onChange={onChange} type="text" {...extraProps} />
+      </TextInputStyled>
+    );
+  }
+);
+
+export default TextInput;
 const TextInputStyled = styled.div`
-  background-color: ${theme.colors.white};
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: ${theme.borderRadius.round};
-  border: 1px solid ${theme.colors.greyLight};
+  display: flex;
+  align-items: center;
 
   .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: ${theme.colors.greySemiDark};
-    font-size: ${theme.fonts.P2};
-    margin-right: 15px;
-    margin-left: -25px;
+    font-size: ${theme.fonts.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
   }
+
   input {
     border: none;
-    width: 80%;
-    &:placeholder {
+    font-size: ${theme.fonts.SM};
+    width: 100%;
+
+    &::placeholder {
       color: ${theme.colors.greyMedium};
-      background: ${theme.colors.white};
     }
   }
 
@@ -51,27 +44,32 @@ const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
+
   input {
     color: ${theme.colors.dark};
-    &:placeholder {
-      color: ${theme.colors.white};
+
+    &::placeholder {
+      background: ${theme.colors.white};
     }
   }
 `;
-const extraStyleMinimal = css`
+
+const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
+
   input {
-    background-color: ${theme.colors.background_white};
+    background: ${theme.colors.background_white}; ////+
     color: ${theme.colors.dark};
+
     &:focus {
-      outline: 0;
+      outline: 0; //// add outline
     }
   }
 `;
 
 const extraStyle = {
   normal: extraStyleNormal,
-  minimal: extraStyleMinimal,
+  minimalist: extraStyleMinimalist,
 };
