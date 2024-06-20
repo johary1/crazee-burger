@@ -18,12 +18,15 @@ const BasketStyled = styled.div`
   flex-direction: column;
 
   .head {
+    height: 70px;
     background: ${theme.colors.background_dark};
   }
   .body {
+    flex: 1;
     background: ${theme.colors.background_white};
   }
   .footer {
+    height: 70px;
     background: ${theme.colors.background_dark};
   }
 `;
