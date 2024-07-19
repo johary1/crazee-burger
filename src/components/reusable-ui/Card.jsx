@@ -66,7 +66,6 @@ const CardStyled = styled.div`
 
   .card {
     background: ${theme.colors.white};
-    /* box-sizing: border-box; */
     width: 240px;
     height: 330px;
     display: grid;
@@ -92,15 +91,14 @@ const CardStyled = styled.div`
       background: none;
 
       .icon {
-        /* border: 1px solid blue; */
         height: 100%;
         width: 100%;
       }
 
       :hover {
         color: ${theme.colors.red};
-        /* background-color: red; */
       }
+
       :active {
         color: ${theme.colors.primary};
       }
@@ -179,7 +177,6 @@ const hoverableStyle = css`
   :hover {
     transform: scale(1.05);
     transition: ease-out 0.4s;
-    /* box-shadow: ${theme.shadows.orangeHighlight}; */
     cursor: pointer;
   }
 `;

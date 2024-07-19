@@ -81,7 +81,7 @@ const extraStyleSuccess = css`
   border: 1px solid ${theme.colors.success};
   border-radius: ${theme.borderRadius.round};
   height: 35px;
-  /* padding: 0 1em; */
+  padding: 0 1em;
   font-weight: ${theme.weights.semiBold};
   &:hover {
     background: ${theme.colors.white};
