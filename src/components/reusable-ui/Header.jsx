@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+// eslint-disable-next-line react/prop-types
 export default function Header({ children }) {
   return <HeaderStyled>{children}</HeaderStyled>;
 }
@@ -7,4 +8,5 @@ export default function Header({ children }) {
 const HeaderStyled = styled.div`
   height: 70px;
   background: ${theme.colors.background_dark};
+  padding: 0 16px;
 `;

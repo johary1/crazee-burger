@@ -10,7 +10,7 @@ import { BsChevronRight } from "react-icons/bs";
 
 const LoginForm = () => {
   // state
-  const [inputValue, setFirstName] = useState("Jojo");
+  const [inputValue, setFirstName] = useState("Guest");
 
   const navigate = useNavigate();
 
