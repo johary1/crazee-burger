@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme";
+import { theme } from "../../../../../theme";
+import Header from "../../../../reusable-ui/Header";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div className="head">Header</div>
+      <Header>Header</Header>
       <div className="body">Body</div>
-      <div className="footer">Footer</div>
+      <Header>Footer</Header>
     </BasketStyled>
   );
 }
@@ -16,17 +17,9 @@ const BasketStyled = styled.div`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   display: flex;
   flex-direction: column;
-
-  .head {
-    height: 70px;
-    background: ${theme.colors.background_dark};
-  }
   .body {
     flex: 1;
     background: ${theme.colors.background_white};
-  }
-  .footer {
-    height: 70px;
-    background: ${theme.colors.background_dark};
+    box-shadow: ${theme.shadows.basket};
   }
 `;
